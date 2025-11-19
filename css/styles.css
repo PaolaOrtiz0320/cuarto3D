@@ -1,0 +1,244 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo y estilo de la página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* Contenedor principal del visor VR */
+#container {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Barra de navegación */
+#topbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+#topbar .brand {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+#topbar .brand .brand-logo {
+    font-size: 28px;
+    margin-right: 8px;
+}
+
+#topbar .brand .brand-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-actions .btn {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-actions .btn:hover {
+    background-color: #2563eb;
+}
+
+.nav-actions .btn.ghost {
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.nav-actions .btn.ghost:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Información en pantalla */
+#info {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(5px);
+    max-width: 90%;
+    min-width: 300px;
+    font-size: 18px;
+}
+
+#info h1 {
+    font-size: 32px;
+    color: #4fc3f7;
+    margin-bottom: 10px;
+}
+
+#info p {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+#loading {
+    font-size: 16px;
+    color: #4fc3f7;
+    font-weight: bold;
+    margin-top: 10px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Estilo para el botón VR generado por Three.js */
+#VRButton {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#VRButton:hover {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+#VRButton:active {
+    transform: translateX(-50%) scale(0.98);
+}
+
+/* Ocultar info cuando estamos en VR */
+body.vr-mode #info {
+    display: none;
+}
+
+/* Footer minimalista */
+#app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: #1a1a1a;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#app-footer .footer-left {
+    display: flex;
+    gap: 5px;
+}
+
+#app-footer .footer-right {
+    text-align: right;
+}
+
+#app-footer .dot {
+    color: #ccc;
+}
+
+/* Indicador de compatibilidad VR */
+.vr-not-supported {
+    background: rgba(255, 87, 34, 0.9) !important;
+    border: 2px solid #ff5722;
+}
+
+.vr-not-supported::after {
+    content: " (VR no disponible en este dispositivo)";
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    /* Información y botones ajustados para pantallas pequeñas */
+    #info {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+    
+    #info h1 {
+        font-size: 24px;
+    }
+    
+    #info p {
+        font-size: 14px;
+    }
+    
+    #VRButton {
+        padding: 12px 30px;
+        font-size: 16px;
+        bottom: 20px;
+    }
+
+    #topbar {
+        padding: 15px;
+    }
+
+    #topbar .brand .brand-text {
+        font-size: 18px;
+    }
+
+    .nav-actions {
+        display: block;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .nav-actions .btn {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+}
